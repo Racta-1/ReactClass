@@ -24,6 +24,11 @@ const reducer = (state, action) => {
         ...state,
         students: [action.payload, ...state.students],
       };
+    // case 'ADD_PHOTOS':
+    //   return {
+    //     ...state,
+    //     photos: [action.payload, ...state.photos],
+    //   };
     default:
       return state;
   }

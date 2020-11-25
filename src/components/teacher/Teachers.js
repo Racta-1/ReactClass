@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Teacher from './Teacher';
+import TeachersForm from './TeachersForm';
 import { Consumer } from '../../context';
 
 class Teachers extends Component {
@@ -14,6 +15,7 @@ class Teachers extends Component {
               {teachers.map((teach) => (
                 <Teacher key={teach.id} teacher={teach} />
               ))}
+              <TeachersForm />
             </React.Fragment>
           );
         }}

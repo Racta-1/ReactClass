@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
 import Student from './Student';
+import StudentsForm from './StudentsForm';
 
 class Students extends Component {
   render() {
@@ -14,6 +15,7 @@ class Students extends Component {
               {students.map((stu) => (
                 <Student key={stu.id} student={stu} />
               ))}
+              <StudentsForm />
             </React.Fragment>
           );
         }}
