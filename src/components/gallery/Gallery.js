@@ -31,7 +31,7 @@ class Gallery extends Component {
     return (
       <Jumbotron className="bg-success p-5">
         <Container fluid>
-          <h1 className="text-white text-center mb-5">Gallery Images</h1>
+          <h1 className="text-white text-center mb-5">Gallery Image</h1>
           <Row>
             {photos.map((pho) => (
               <Col key={pho.id} lg={4} xs={6} className="card shadow">
