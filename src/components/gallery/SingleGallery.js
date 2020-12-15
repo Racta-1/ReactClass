@@ -31,6 +31,7 @@ class SingleGallery extends Component {
       <Jumbotron className="bg-success p-5">
         <Container fluid>
           <h1 className="text-white text-center mb-5">Gallery Images</h1>
+          <hr />
           <Row>
             <Col key={photo.id} lg={4} xs={6} className="card shadow">
               <div className="card-header">

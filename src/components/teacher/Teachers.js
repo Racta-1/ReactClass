@@ -10,13 +10,13 @@ class Teachers extends Component {
         {(value) => {
           const { teachers } = value;
           return (
-            <React.Fragment>
+            <div className="col-sm-8 offset-2 col-lg-6 offset-lg-3">
               <h1 className="mt-5 mb-3">List of Teachers</h1>
               {teachers.map((teach) => (
                 <Teacher key={teach.id} teacher={teach} />
               ))}
               <TeachersForm />
-            </React.Fragment>
+            </div>
           );
         }}
       </Consumer>

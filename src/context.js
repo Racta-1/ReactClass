@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 const Context = React.createContext();
 
@@ -14,6 +15,11 @@ const reducer = (state, action) => {
         ...state,
         students: state.students.filter((stu) => stu.id !== action.payload),
       };
+    case 'DELETE_CONTACT':
+      return {
+        ...state,
+        contacts: state.contacts.filter((cont) => cont.id !== action.payload),
+      };
     case 'ADD_TEACHER':
       return {
         ...state,
@@ -24,11 +30,20 @@ const reducer = (state, action) => {
         ...state,
         students: [action.payload, ...state.students],
       };
-    // case 'ADD_PHOTOS':
-    //   return {
-    //     ...state,
-    //     photos: [action.payload, ...state.photos],
-    //   };
+    case 'ADD_CONTACT':
+      return {
+        ...state,
+        contacts: [action.payload, ...state.contacts],
+      };
+    case 'UPDATE_CONTACT':
+      return {
+        ...state,
+        contacts: state.contacts.map((contact) =>
+          contact.id === action.payload.id
+            ? (contact = action.payload)
+            : contact
+        ),
+      };
     default:
       return state;
   }
@@ -101,10 +116,18 @@ export class Provider extends Component {
         phone: '58322-48900-9238',
       },
     ],
+    contacts: [],
     dispatch: (action) => {
       this.setState((state) => reducer(state, action));
     },
   };
+
+  async componentDidMount() {
+    const response = await axios.get(
+      'http://jsonplaceholder.typicode.com/users'
+    );
+    this.setState({ contacts: response.data });
+  }
 
   render() {
     return (

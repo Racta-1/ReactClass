@@ -4,54 +4,47 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Container, Jumbotron } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
-// import background from '../../background.jpg';
-// import { Consumer } from '../../context';
 
-class Gallery extends Component {
+class Post extends Component {
   state = {
-    photos: [],
+    posts: [],
   };
 
   componentDidMount() {
-    // console.log(this.state);
     axios
-      .get('http://jsonplaceholder.typicode.com/photos')
+      .get('http://jsonplaceholder.typicode.com/posts')
       .then((response) => {
         this.setState({
-          photos: response.data.slice(0, 50),
+          posts: response.data,
         });
-        // console.log(this.state);
       })
       .catch((err) => {
         console.log(err);
       });
   }
+
   render() {
-    const { photos } = this.state;
+    const { posts } = this.state;
     return (
-      <Jumbotron className="bg-success p-5">
+      <Jumbotron className="bg-danger p-5">
         <Container fluid>
-          <h1 className="text-white text-center mb-5">Gallery Images</h1>
+          <h1 className="text-white text-center mb-5">My Posts</h1>
           <hr />
           <Row>
-            {photos.map((pho) => (
-              <Col key={pho.id} lg={4} xs={6} className="card shadow">
+            {posts.map((post) => (
+              <Col key={post.id} lg={4} xs={6} className="card shadow">
                 <div className="card-header">
                   <h1>
                     <Link
-                      to={'/gallery/' + pho.id}
+                      to={'/posts/' + post.id}
                       className="nav-link text-dark"
                     >
-                      {pho.title}
+                      {post.title}
                     </Link>
                   </h1>
                 </div>
-                <div className="card-img">
-                  <img
-                    src={pho.thumbnailUrl}
-                    className="img-fluid"
-                    alt="Background"
-                  />
+                <div className="card-body">
+                  <p>{post.body}</p>
                 </div>
               </Col>
             ))}
@@ -62,4 +55,4 @@ class Gallery extends Component {
   }
 }
 
-export default Gallery;
+export default Post;
