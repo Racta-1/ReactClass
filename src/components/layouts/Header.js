@@ -31,7 +31,7 @@ class Header extends Component {
                   width="50"
                   className="App-logo mr-3"
                 />
-                TeachStu App
+                Learning App
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
